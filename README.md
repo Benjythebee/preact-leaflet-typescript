@@ -1,5 +1,7 @@
 # typescript Preact leaflet
 
+**Still in development**
+
 A Preaect wrapper made in Javascript and converted to Javascript from [Preact-leaflet](https://github.com/kontrollanten/preact-leaflet). Credit goes to [kontrollanten](https://github.com/kontrollanten).
 
 Supporting following Leaflet components:
