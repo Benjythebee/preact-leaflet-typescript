@@ -15,18 +15,18 @@ import {
 
 // Map.tsx types:
 
-interface ExtendedMapOptionsProps extends MapOptions {
+export interface ExtendedMapOptionsProps extends MapOptions {
   bounds: LatLngBoundsExpression;
 }
 
 // Create layer types:
-type LayerType = Marker | TileLayer | Polyline;
+export type LayerType = Marker | TileLayer | Polyline;
 
-type LayerTypeConstructable = LayerType & {
+export type LayerTypeConstructable = LayerType & {
   new (firstArgProp: string, options: { componentName?: string }): LayerType;
 };
 
-interface CreateLayerOptions extends TileLayerOptions, PolylineOptions, MarkerOptions {
+export interface CreateLayerOptions extends TileLayerOptions, PolylineOptions, MarkerOptions {
   leafletMap: Map;
   LayerType: LayerType;
   firstArgProp: string;
@@ -35,7 +35,7 @@ interface CreateLayerOptions extends TileLayerOptions, PolylineOptions, MarkerOp
 
 // Zoom control types
 
-interface ZoomControlProps {
+export interface ZoomControlProps {
   leafletMap: Map;
   position: ControlPosition;
   options: ZoomOptions;
@@ -43,7 +43,7 @@ interface ZoomControlProps {
 
 // MarkerCluster Control props
 
-interface MarkerClusterProps {
+export interface MarkerClusterProps {
   leafletMap: Map;
   position: ControlPosition;
   options: ZoomOptions;
