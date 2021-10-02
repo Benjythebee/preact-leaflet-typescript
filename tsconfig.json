@@ -10,5 +10,7 @@
     "include": ["./src"],
     "exclude": [
       "./**/*.test.ts",
+      "./test/",
+      "./node_modules/",
       "./dist/"]
   }
