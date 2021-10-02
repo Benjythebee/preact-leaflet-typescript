@@ -7,7 +7,7 @@ const createLayer = (
   TypeOfLayer: LayerTypeConstructable,
   firstArgProp: string,
   { componentName }: { componentName?: string } = {},
-): ComponentClass<CreateLayerOptions,any> => {
+): ComponentClass<CreateLayerOptions, any> => {
   class Layer extends Component<CreateLayerOptions, any> {
     static LayerType: LayerTypeConstructable;
     layer: LayerType;
@@ -56,7 +56,7 @@ const createLayer = (
   Layer.LayerType = TypeOfLayer;
   Layer.displayName = `createLayer(${componentName})`;
 
-  return Layer
+  return Layer;
 };
 
 export default createLayer;
