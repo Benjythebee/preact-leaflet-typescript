@@ -1,4 +1,6 @@
-# preact-leaflet [![codecov](https://codecov.io/gh/kontrollanten/preact-leaflet/branch/master/graph/badge.svg)](https://codecov.io/gh/kontrollanten/preact-leaflet) [![CircleCI](https://circleci.com/gh/kontrollanten/preact-leaflet.svg?style=svg)](https://circleci.com/gh/kontrollanten/preact-leaflet)
+# preact-leafle- typescript
+
+A Preaect wrapper made in Javascript and converted to Javascript from [Preact-leaflet](https://github.com/kontrollanten/preact-leaflet). Credit goes to [kontrollanten](https://github.com/kontrollanten).
 
 Supporting following Leaflet components:
 * [Map](https://leafletjs.com/reference-1.4.0.html#map-example)
