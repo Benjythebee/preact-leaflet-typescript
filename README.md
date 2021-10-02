@@ -1,4 +1,4 @@
-# preact-leafle- typescript
+# typescript Preact leaflet
 
 A Preaect wrapper made in Javascript and converted to Javascript from [Preact-leaflet](https://github.com/kontrollanten/preact-leaflet). Credit goes to [kontrollanten](https://github.com/kontrollanten).
 
@@ -30,3 +30,7 @@ All props, except for `on` prefixed, are passed to Leaflet.
 
 ### Event listeners
 Props prefixed with `on` are handled as event listeners, e.g. `onZoom` will listen for the `zoom` event.
+
+
+### Todo:
+- Add tests (jasmine, mocha, jest)
