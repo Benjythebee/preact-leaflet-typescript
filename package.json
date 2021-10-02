@@ -11,10 +11,10 @@
   ],
   "scripts": {
     "test": "jest --config jestconfig.json --passWithNoTests",
-    "build": "tsc",
+    "build": "tsc --declaration",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint -c .eslintrc.js",
-    "prepare": "npm run build && cp -R src/types build/types ",
+    "prepare": "npm run build ",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
