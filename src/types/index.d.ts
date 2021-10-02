@@ -1,38 +1,50 @@
-import { LatLngBoundsExpression,FeatureGroup, MapOptions,Map,Marker, MarkerOptions, Polyline, PolylineOptions, TileLayer, TileLayerOptions, ZoomOptions, ControlPosition } from "leaflet";
+import {
+  LatLngBoundsExpression,
+  FeatureGroup,
+  MapOptions,
+  Map,
+  Marker,
+  MarkerOptions,
+  Polyline,
+  PolylineOptions,
+  TileLayer,
+  TileLayerOptions,
+  ZoomOptions,
+  ControlPosition,
+} from 'leaflet';
 
 // Map.tsx types:
 
 interface ExtendedMapOptionsProps extends MapOptions {
-    bounds:LatLngBoundsExpression
+  bounds: LatLngBoundsExpression;
 }
 
 // Create layer types:
-type LayerType = Marker | TileLayer | Polyline
+type LayerType = Marker | TileLayer | Polyline;
 
 type LayerTypeConstructable = LayerType & {
-new(  firstArgProp:string,
-  options:{componentName?:string}):LayerType;
-}
+  new (firstArgProp: string, options: { componentName?: string }): LayerType;
+};
 
-interface CreateLayerOptions extends TileLayerOptions , PolylineOptions ,MarkerOptions{
-  leafletMap:Map
-  LayerType:LayerType
-  firstArgProp:string
-  options:{componentName:string}
+interface CreateLayerOptions extends TileLayerOptions, PolylineOptions, MarkerOptions {
+  leafletMap: Map;
+  LayerType: LayerType;
+  firstArgProp: string;
+  options: { componentName: string };
 }
 
 // Zoom control types
 
 interface ZoomControlProps {
-    leafletMap:Map,
-    position:ControlPosition
-    options:ZoomOptions
-  }
+  leafletMap: Map;
+  position: ControlPosition;
+  options: ZoomOptions;
+}
 
-  // MarkerCluster Control props
+// MarkerCluster Control props
 
 interface MarkerClusterProps {
-    leafletMap:Map,
-    position:ControlPosition
-    options:ZoomOptions
-  }
+  leafletMap: Map;
+  position: ControlPosition;
+  options: ZoomOptions;
+}

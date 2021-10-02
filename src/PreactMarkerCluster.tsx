@@ -1,13 +1,13 @@
 import { h, Component, toChildArray, VNode } from 'preact';
-import {MarkerClusterGroup} from 'leaflet.markercluster';
+import { MarkerClusterGroup } from 'leaflet.markercluster';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
 import { MarkerClusterProps } from './types';
 import { FeatureGroup } from 'leaflet';
 
-export default class MarkersCluster extends Component<MarkerClusterProps,any> {
-  layer:FeatureGroup
-  constructor(props:MarkerClusterProps) {
+export default class MarkersCluster extends Component<MarkerClusterProps, any> {
+  layer: FeatureGroup;
+  constructor(props: MarkerClusterProps) {
     super(props);
     this.layer = MarkerClusterGroup(getOptions(props)) as FeatureGroup;
   }
@@ -34,13 +34,11 @@ export default class MarkersCluster extends Component<MarkerClusterProps,any> {
 
   render() {
     const children = toChildArray(this.props.children)
-      .filter(c => c)
-      .map((child:VNode<any>) => (
-        {
-          ...child,
-          props: { ...child.props, leafletMap: this.layer },
-        }
-      ));
+      .filter((c) => c)
+      .map((child: VNode<any>) => ({
+        ...child,
+        props: { ...child.props, leafletMap: this.layer },
+      }));
 
     return <div>{children}</div>;
   }

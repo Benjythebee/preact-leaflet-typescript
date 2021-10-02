@@ -1,26 +1,27 @@
 import { Component } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
-import { CreateLayerOptions, LayerTypeConstructable,LayerType } from './types';
+import { CreateLayerOptions, LayerTypeConstructable, LayerType } from './types';
 
-
-const createLayer = (LayerType:LayerTypeConstructable, firstArgProp:string, {
-  componentName,
-}:{componentName?:string} = {}) => {
-  class Layer extends Component<CreateLayerOptions,any> {
-    static LayerType:LayerTypeConstructable
-    layer:LayerType
+const createLayer = (
+  TypeOfLayer: LayerTypeConstructable,
+  firstArgProp: string,
+  { componentName }: { componentName?: string } = {},
+) => {
+  class Layer extends Component<CreateLayerOptions, any> {
+    static LayerType: LayerTypeConstructable;
+    layer: LayerType;
 
     componentDidMount() {
       const { children, leafletMap, ...props } = this.props;
 
       if (!leafletMap) {
-        // eslint-disable-next-line no-console
-        console.error('Couldn\'t find leafletMap prop');
+        // tslint:disable-next-line
+        console.error("Couldn't find leafletMap prop");
       }
 
       if (!props[firstArgProp]) {
-        // eslint-disable-next-line no-console
+        // tslint:disable-next-line
         console.error(`${firstArgProp} prop is required.`);
       }
 
@@ -52,7 +53,7 @@ const createLayer = (LayerType:LayerTypeConstructable, firstArgProp:string, {
     }
   }
 
-  Layer.LayerType = LayerType;
+  Layer.LayerType = TypeOfLayer;
   Layer.displayName = `createLayer(${componentName})`;
 
   return Layer;

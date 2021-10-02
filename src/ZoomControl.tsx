@@ -2,9 +2,8 @@ import { Component } from 'preact';
 import { Control, control, Map, ZoomOptions } from 'leaflet';
 import { ZoomControlProps } from './types';
 
-
-export default class ZoomControl extends Component<ZoomControlProps,any> {
-  control:Control
+export default class ZoomControl extends Component<ZoomControlProps, any> {
+  control: Control;
   componentDidMount() {
     const { leafletMap, ...options } = this.props;
     // eslint-disable-next-line new-cap

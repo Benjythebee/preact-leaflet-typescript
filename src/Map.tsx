@@ -3,27 +3,23 @@ import { Map as LeafletMap, MapOptions } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import { ExtendedMapOptionsProps } from './types';
 
-interface MapState{
-  map:LeafletMap
+interface MapState {
+  map: LeafletMap;
 }
 
-export default class Map extends Component<ExtendedMapOptionsProps,MapState> {
-  ref:HTMLDivElement
+export default class Map extends Component<ExtendedMapOptionsProps, MapState> {
+  ref: HTMLDivElement;
 
-  constructor(props:ExtendedMapOptionsProps){
-    super(props)
+  constructor(props: ExtendedMapOptionsProps) {
+    super(props);
 
-    this.state={
-      map:null!
-    }
+    this.state = {
+      map: null!,
+    };
   }
 
   componentDidMount() {
-    const {
-      bounds,
-      zoom = 6,
-      ...options
-    } = this.getProps({ leafletOptions: true });
+    const { bounds, zoom = 6, ...options } = this.getProps({ leafletOptions: true });
 
     const map = new LeafletMap(this.ref, { zoom, ...options });
 
@@ -61,7 +57,7 @@ export default class Map extends Component<ExtendedMapOptionsProps,MapState> {
     this.state.map.remove();
   }
 
-  getProps({ leafletOptions = false } = {}):ExtendedMapOptionsProps {
+  getProps({ leafletOptions = false } = {}): ExtendedMapOptionsProps {
     const mapOptions = [
       'attributionControl',
       'bounceAtZoomLimits',
@@ -99,29 +95,34 @@ export default class Map extends Component<ExtendedMapOptionsProps,MapState> {
       'zoomControl',
     ];
 
-
     return Object.keys(this.props)
-      .filter(prop => (leafletOptions
-        ? mapOptions.indexOf(prop) !== -1
-        : mapOptions.indexOf(prop) === -1
-      ))
-      .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {bounds:null,zoom:6});
+      .filter((prop) => (leafletOptions ? mapOptions.indexOf(prop) !== -1 : mapOptions.indexOf(prop) === -1))
+      .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {
+        bounds: null,
+        zoom: 6,
+      });
   }
 
-  hasPropChanged(prop, prevProps:ExtendedMapOptionsProps) {
+  hasPropChanged(prop, prevProps: ExtendedMapOptionsProps) {
     return this.props[prop] !== prevProps[prop];
   }
 
   render() {
     const children = toChildArray(this.props.children)
-      .filter(c => c)
-      .map((child:VNode<any>) => Object.assign(
-        child,
-        { props: { ...child.props, leafletMap: this.state.map } },
-      ));
+      .filter((c) => c)
+      .map((child: VNode<any>) =>
+        Object.assign(child, {
+          props: { ...child.props, leafletMap: this.state.map },
+        }),
+      );
 
     return (
-      <div {...this.getProps()} ref={(ref) => { this.ref = ref; }}>
+      <div
+        {...this.getProps()}
+        ref={(ref) => {
+          this.ref = ref;
+        }}
+      >
         {!!this.state.map && children}
       </div>
     );
