@@ -9,20 +9,18 @@ const createLayer = (
   firstArgProp: string,
   { componentName }: { componentName?: string } = {},
 ) => {
-
   Layer.LayerType = TypeOfLayer;
   Layer.displayName = `createLayer(${componentName})`;
 
-  return new Layer;
+  return new Layer();
 };
 
 export default createLayer;
 
-
 export class Layer extends Component<CreateLayerOptions, any> {
   static LayerType: LayerTypeConstructable;
   layer: LayerType;
-  firstArgProps:string
+  firstArgProps: string;
 
   componentDidMount() {
     const { children, leafletMap, ...props } = this.props;
