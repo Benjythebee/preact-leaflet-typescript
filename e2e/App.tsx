@@ -30,7 +30,7 @@ const getRouteConfig = (hash) => {
     case '#polyline':
       return {
         mapCenter: [63.83919, 20.15069],
-        markerCluster: false,
+        markerCluster: null,
         markers: [
           [59.3367, 18.0667],
           [63.8374896962485, 20.163206074534],
@@ -43,7 +43,7 @@ const getRouteConfig = (hash) => {
     default:
       return {
         mapCenter: [59.3367, 18.0667],
-        markerCluster: false,
+        markerCluster: null,
         markers: [],
         polylines: [],
         zoom: 10,
@@ -51,7 +51,15 @@ const getRouteConfig = (hash) => {
   }
 };
 
-export default class App extends Component {
+interface State {
+  mapCenter: number[],
+  markerCluster: any[],
+  markers: any[],
+  polylines: any[],
+  zoom: number,
+}
+
+export default class App extends Component<any,State> {
   constructor(props) {
     super(props);
     this.state = getRouteConfig(window.location.hash);

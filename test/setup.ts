@@ -1,6 +1,6 @@
-import Enzyme from 'enzyme';
+import * as Enzyme from 'enzyme';
 import { PreactAdapter } from 'enzyme-adapter-preact-pure';
-import chai from 'chai';
+import * as chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 Enzyme.configure({

@@ -7,13 +7,14 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['browserify', 'jasmine'],
     files: [
-      'src/*.test.js',
+      'src/*.test.ts',
     ],
     exclude: [
       'src/*.swp',
     ],
     preprocessors: {
-      'src/**/*.js': ['browserify'],
+      'src/**/*.ts': ['browserify'],
+      "src/**/*.tsx":"karma-typescript"
     },
     reporters: ['mocha', coverage && 'coverage-istanbul'].filter(r => r),
     port: 9876,

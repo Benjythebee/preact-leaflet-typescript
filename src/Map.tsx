@@ -1,8 +1,23 @@
-import { h, Component, toChildArray } from 'preact';
-import { Map as LeafletMap } from 'leaflet';
+import { h, Component, toChildArray, VNode, JSX } from 'preact';
+import { Map as LeafletMap, MapOptions } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
+import { ExtendedMapOptionsProps } from './types';
 
-class Map extends Component {
+interface MapState{
+  map:LeafletMap
+}
+
+export default class Map extends Component<ExtendedMapOptionsProps,MapState> {
+  ref:HTMLDivElement
+
+  constructor(props:ExtendedMapOptionsProps){
+    super(props)
+
+    this.state={
+      map:null!
+    }
+  }
+
   componentDidMount() {
     const {
       bounds,
@@ -46,14 +61,16 @@ class Map extends Component {
     this.state.map.remove();
   }
 
-  getProps({ leafletOptions = false } = {}) {
+  getProps({ leafletOptions = false } = {}):ExtendedMapOptionsProps {
     const mapOptions = [
       'attributionControl',
       'bounceAtZoomLimits',
       'boundsOptions',
       'bounds',
       'crs',
+      'closePopupOnClick',
       'center',
+      'dragging',
       'easeLinearity',
       'fadeAnimation',
       'inertia',
@@ -82,22 +99,23 @@ class Map extends Component {
       'zoomControl',
     ];
 
+
     return Object.keys(this.props)
       .filter(prop => (leafletOptions
         ? mapOptions.indexOf(prop) !== -1
         : mapOptions.indexOf(prop) === -1
       ))
-      .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {});
+      .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {bounds:null,zoom:6});
   }
 
-  hasPropChanged(prop, prevProps) {
+  hasPropChanged(prop, prevProps:ExtendedMapOptionsProps) {
     return this.props[prop] !== prevProps[prop];
   }
 
   render() {
     const children = toChildArray(this.props.children)
       .filter(c => c)
-      .map(child => Object.assign(
+      .map((child:VNode<any>) => Object.assign(
         child,
         { props: { ...child.props, leafletMap: this.state.map } },
       ));
@@ -109,5 +127,3 @@ class Map extends Component {
     );
   }
 }
-
-export default Map;
