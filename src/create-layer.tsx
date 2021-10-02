@@ -1,4 +1,4 @@
-import { Component, h } from 'preact';
+import { Component, ComponentClass, h } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
 import { CreateLayerOptions, LayerTypeConstructable, LayerType } from './types';
@@ -7,13 +7,11 @@ const createLayer = (
   TypeOfLayer: LayerTypeConstructable,
   firstArgProp: string,
   { componentName }: { componentName?: string } = {},
-): AbstractLayer => {
+): ComponentClass<CreateLayerOptions,any> => {
   class Layer extends Component<CreateLayerOptions, any> {
     static LayerType: LayerTypeConstructable;
     layer: LayerType;
-    constructor(props:CreateLayerOptions){
-      super()
-    }
+
     componentDidMount() {
       const { children, leafletMap, ...props } = this.props;
 
@@ -58,19 +56,7 @@ const createLayer = (
   Layer.LayerType = TypeOfLayer;
   Layer.displayName = `createLayer(${componentName})`;
 
-  return Layer as unknown as AbstractLayer;
+  return Layer
 };
 
 export default createLayer;
-
-export class AbstractLayer extends Component<CreateLayerOptions, any> {
-  static LayerType: LayerTypeConstructable;
-  layer: LayerType;
-  displayName:string;
-  ref: HTMLDivElement;
-  constructor(props: CreateLayerOptions){super()};
-  componentDidMount(){}
-  componentDidUpdate(prevProps: CreateLayerOptions){}
-  componentWillUnmount(){}
-  render(){return null}
-}
