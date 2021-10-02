@@ -1,11 +1,16 @@
 import { Component } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
+import { CreateLayerOptions, LayerTypeConstructable,LayerType } from './types';
 
-const createLayer = (LayerType, firstArgProp, {
+
+const createLayer = (LayerType:LayerTypeConstructable, firstArgProp:string, {
   componentName,
-} = {}) => {
-  class Layer extends Component {
+}:{componentName?:string} = {}) => {
+  class Layer extends Component<CreateLayerOptions,any> {
+    static LayerType:LayerTypeConstructable
+    layer:LayerType
+
     componentDidMount() {
       const { children, leafletMap, ...props } = this.props;
 
