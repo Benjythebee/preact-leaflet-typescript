@@ -11,5 +11,6 @@
     "exclude": [
       "./node_modules/",
       "./build/",
-    "./e2e/"]
+    "./e2e/",
+    "./dist/"]
   }
