@@ -10,11 +10,14 @@
     "build/**/*"
   ],
   "scripts": {
-    "test": "jest --config jestconfig.json --passWithNoTests",
+    "demo": "parcel e2e/index.html",
+    "demo:build": "parcel build e2e/index.html",
+    "jest":"jest --config jestconfig.json --passWithNoTests",
     "build": "tsc --declaration",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint -c .eslintrc.js",
     "prepare": "npm run build  && cp -R src/types build/",
+    "buildAndTest": "npm run build && npm run jest && npm run demo",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -25,6 +28,7 @@
     "@types/leaflet": "^1.7.5",
     "leaflet": "1.7.1",
     "leaflet.markercluster": "1.5.1",
+    "parcel": "^2.0.0-rc.0",
     "preact": "^10.5.14",
     "tslint": "^6.1.3"
   },
@@ -43,6 +47,7 @@
     "@babel/plugin-transform-react-jsx": "7.12.16",
     "@babel/preset-env": "7.12.16",
     "@babel/preset-react": "7.12.13",
+    "@parcel/transformer-image": "^2.0.0-rc.0",
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
