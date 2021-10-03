@@ -1,14 +1,15 @@
 import { Component, ComponentClass, h } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
-import { CreateLayerOptions, LayerTypeConstructable, LayerType } from './types';
+import { LayerTypeConstructable, LayerType, LayerProps } from './types';
+
 
 const createLayer = (
   TypeOfLayer: LayerTypeConstructable,
   firstArgProp: string,
   { componentName }: { componentName?: string } = {},
-): ComponentClass<CreateLayerOptions, any> => {
-  class Layer extends Component<CreateLayerOptions, any> {
+): ComponentClass<LayerProps, any> => {
+  class Layer extends Component<LayerProps, any> {
     static LayerType: LayerTypeConstructable;
     layer: LayerType;
 

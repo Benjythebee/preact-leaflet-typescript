@@ -1,5 +1,5 @@
 import { h, Component, toChildArray, VNode, JSX } from 'preact';
-import { Map as LeafletMap, MapOptions } from 'leaflet';
+import { Map as LeafletMap } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import { ExtendedMapOptionsProps } from './types';
 
@@ -9,14 +9,6 @@ interface MapState {
 
 export default class Map extends Component<ExtendedMapOptionsProps, MapState> {
   ref: HTMLDivElement;
-
-  constructor(props: ExtendedMapOptionsProps) {
-    super(props);
-
-    this.state = {
-      map: null!,
-    };
-  }
 
   componentDidMount() {
     const { bounds, zoom = 6, ...options } = this.getProps({ leafletOptions: true });
@@ -57,7 +49,7 @@ export default class Map extends Component<ExtendedMapOptionsProps, MapState> {
     this.state.map.remove();
   }
 
-  getProps({ leafletOptions = false } = {}): ExtendedMapOptionsProps {
+  getProps({ leafletOptions = false } = {}) {
     const mapOptions = [
       'attributionControl',
       'bounceAtZoomLimits',
