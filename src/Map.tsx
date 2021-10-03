@@ -1,7 +1,7 @@
 import { h, Component, toChildArray, VNode, JSX } from 'preact';
 import { Map as LeafletMap } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
-import { ExtendedMapOptionsProps } from './types';
+import { ExtendedMapOptionsProps } from './types/interfaces';
 
 interface MapState {
   map: LeafletMap;

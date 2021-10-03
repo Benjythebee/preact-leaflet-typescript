@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import { Control, control, Map, ZoomOptions } from 'leaflet';
-import { ZoomControlProps } from './types';
+import { ZoomControlProps } from './types/interfaces';
 
 export default class ZoomControl extends Component<ZoomControlProps, any> {
   control: Control;

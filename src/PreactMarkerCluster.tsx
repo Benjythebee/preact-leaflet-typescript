@@ -2,7 +2,7 @@ import { h, Component, toChildArray, VNode } from 'preact';
 import { MarkerClusterGroup } from 'leaflet.markercluster';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
-import { MarkerClusterProps } from './types';
+import { MarkerClusterProps } from './types/interfaces';
 import { FeatureGroup } from 'leaflet';
 
 export default class MarkersCluster extends Component<MarkerClusterProps, any> {

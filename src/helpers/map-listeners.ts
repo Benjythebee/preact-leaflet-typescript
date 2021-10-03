@@ -1,5 +1,5 @@
 import { FeatureGroup, Map } from 'leaflet';
-import { LayerType } from '../types';
+import { LayerType } from '../types/interfaces';
 
 const onPropRegex = /on[A-Z](.*)/;
 

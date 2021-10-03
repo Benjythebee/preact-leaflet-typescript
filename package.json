@@ -3,7 +3,7 @@
   "version": "0.1.6",
   "description": "A leaflet Wrapper in typescript",
   "main": "build/index.js",
-  "types": "build/types/index.d.ts",
+  "types": "build/index.d.ts",
   "author": "kontrollanten <stambanan@pm.me> - & @Benjythebee",
   "license": "MIT",
   "files": [

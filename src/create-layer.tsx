@@ -1,7 +1,7 @@
 import { Component, ComponentClass, h } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 import getOptions from './helpers/get-options';
-import { LayerTypeConstructable, LayerType, LayerProps } from './types';
+import { LayerTypeConstructable, LayerType, LayerProps } from './types/interfaces';
 
 const createLayer = (
   TypeOfLayer: LayerTypeConstructable,
