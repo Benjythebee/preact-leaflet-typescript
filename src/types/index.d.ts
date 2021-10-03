@@ -17,7 +17,7 @@ import {
 
 interface ExtendedMapOptionsProps extends MapOptions {
   bounds?: LatLngBoundsExpression;
-  style?:Partial<CSSStyleDeclaration>
+  style?: Partial<CSSStyleDeclaration>;
 }
 
 // Create layer types:
@@ -27,11 +27,10 @@ type LayerTypeConstructable = LayerType & {
   new (firstArgProp: string, options: { componentName?: string }): LayerType;
 };
 
-
-interface LayerProps extends TileLayerOptions, PolylineOptions, MarkerOptions{
-  url?:string
-  position?:number[]
-  positions?:number[][]
+interface LayerProps extends TileLayerOptions, PolylineOptions, MarkerOptions {
+  url?: string;
+  position?: number[];
+  positions?: number[][];
   readonly leafletMap?: Map;
 }
 

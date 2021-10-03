@@ -3,7 +3,6 @@ import { addListenersFromProps, removeListenersFromProps } from './helpers/map-l
 import getOptions from './helpers/get-options';
 import { LayerTypeConstructable, LayerType, LayerProps } from './types';
 
-
 const createLayer = (
   TypeOfLayer: LayerTypeConstructable,
   firstArgProp: string,
