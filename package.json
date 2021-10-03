@@ -18,7 +18,7 @@
     "lint": "eslint -c .eslintrc.js",
     "prepare": "npm run build  && cp -R src/types build/",
     "buildAndTest": "npm run build && npm run jest && npm run demo",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm jest && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push origin && git push origin --tags",
