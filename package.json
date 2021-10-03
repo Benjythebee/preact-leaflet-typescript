@@ -1,6 +1,6 @@
 {
   "name": "preact-leaflet-ts",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A leaflet Wrapper in typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
