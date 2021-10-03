@@ -3,7 +3,7 @@
   "version": "0.1.6",
   "description": "A leaflet Wrapper in typescript",
   "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "types": "build/types/index.d.ts",
   "author": "kontrollanten <stambanan@pm.me> - & @Benjythebee",
   "license": "MIT",
   "files": [
@@ -14,7 +14,7 @@
     "build": "tsc --declaration",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint -c .eslintrc.js",
-    "prepare": "npm run build  && cp -R src/types build/types",
+    "prepare": "npm run build  && cp -R src/types build/",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
