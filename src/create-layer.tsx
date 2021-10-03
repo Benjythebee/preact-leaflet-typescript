@@ -16,12 +16,12 @@ const createLayer = (
       const { children, leafletMap, ...props } = this.props;
 
       if (!leafletMap) {
-        // tslint:disable-next-line
+        // eslint-disable-next-line
         console.error("Couldn't find leafletMap prop");
       }
 
       if (!props[firstArgProp]) {
-        // tslint:disable-next-line
+        // eslint-disable-next-line
         console.error(`${firstArgProp} prop is required.`);
       }
 

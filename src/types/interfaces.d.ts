@@ -45,7 +45,7 @@ interface ZoomControlProps {
 // MarkerCluster Control props
 
 interface MarkerClusterProps {
-  leafletMap?: Map;
+  readonly leafletMap?: Map;
   position: ControlPosition;
-  options: ZoomOptions;
+  options?: ZoomOptions;
 }
